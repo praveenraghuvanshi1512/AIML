@@ -1,3 +1,5 @@
+https://www.meetup.com/Bangalore-AI-ML-Meetup/events/261505376/
+
 # Binary classification using ML.Net 
 
 # ![](https://github.com/praveenraghuvanshi1512/AIML/blob/master/Meetup_29_June_2019/Images/ML_Net_logo.png)
