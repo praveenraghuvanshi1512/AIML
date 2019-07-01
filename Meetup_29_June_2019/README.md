@@ -401,7 +401,7 @@ As you can see there is an improvement in accuracy (83.33%) with SdcaLogisticReg
 
 Code, model and logs path is also present to be used.
 
-
+Full source code is available at https://github.com/praveenraghuvanshi1512/AIML/tree/master/Meetup_29_June_2019/Source%20code/binaryclassification
 
 This concludes a sample on Binary classification. Please leave a message for any suggestion/improvements.
 Appreciate feedback https://www.surveymonkey.com/r/KKHZZS2
