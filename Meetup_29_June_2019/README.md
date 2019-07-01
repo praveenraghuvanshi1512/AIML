@@ -404,5 +404,6 @@ Code, model and logs path is also present to be used.
 
 
 This concludes a sample on Binary classification. Please leave a message for any suggestion/improvements.
+Appreciate feedback https://www.surveymonkey.com/r/KKHZZS2
 
 Happy ML :-)
