@@ -1,6 +1,6 @@
 # Code Walkthrough for binary classification problem using ML.Net 
 
-# ![img](.\Images\ML_Net_logo.png)
+# ![](https://github.com/praveenraghuvanshi1512/AIML/blob/master/Meetup_29_June_2019/Images/ML_Net_logo.png)
 
 
 
@@ -75,7 +75,7 @@
 
 13. Navigate back to titanicbinaryclassification directory in VSCode explorer and create directory 'Schema'. Right-click on Schema directory and click on 'New C# class'. Give name of file as Passenger.cs file. File structure should be as shown below.
 
-![Passenger.cs](.\Images\Folder_Structure_basic.png)
+![](https://github.com/praveenraghuvanshi1512/AIML/blob/master/Meetup_29_June_2019/Images/Folder_Structure_basic.png)
 
 
 
