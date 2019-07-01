@@ -73,15 +73,19 @@
 
  
 
-13. Navigate back to titanicbinaryclassification directory in VSCode explorer and create directory 'Schema'. Right-click on Schema directory and click on 'New C# class'. Give name of file as Passenger.cs file. File structure should be as shown below.
+15. Navigate back to titanicbinaryclassification directory in VSCode explorer and create directory 'Schema'. Right-click on Schema directory and click on 'New C# class'. Give name of file as Passenger.cs file. File structure should be as shown below.
 
 ![](https://github.com/praveenraghuvanshi1512/AIML/blob/master/Meetup_29_June_2019/Images/Folder_Structure_basic.png)
 
+16. Install nuget package : Microsoft.ML by executing below command in Terminal
 
+   > ```
+   > dotnet add package Microsoft.ML
+   > ```
 
-13. Replace content of Passenger.cs with below code
+17. Replace content of Passenger.cs with below code
 
-14. ```  c#
+18. ```  c#
     using Microsoft.ML.Data;
     
     namespace titanicbinaryclassification.Schema
@@ -121,15 +125,9 @@ Applying ML.Net to .Net applications involves below basic steps
 
 #### Load -> Transform -> Train -> Evaluate -> Save -> Predict
 
-1. Install nuget package : Microsoft.ML by executing below command in Terminal
+1. Open Program.cs
 
-   > ```
-   > dotnet add package Microsoft.ML.AutoML
-   > ```
-
-2. Open Program.cs
-
-3. First step to create a model using ML.Net is to create an instance of MLContext. 
+2. First step to create a model using ML.Net is to create an instance of MLContext. 
 
    MLContext is the core of ML.Net. It provides a way to create components for data preparation, feature engineering, training, prediction and model evaluation.
 
@@ -404,6 +402,6 @@ Code, model and logs path is also present to be used.
 Full source code is available at https://github.com/praveenraghuvanshi1512/AIML/tree/master/Meetup_29_June_2019/Source%20code/binaryclassification
 
 This concludes a sample on Binary classification. Please leave a message for any suggestion/improvements.
-Appreciate feedback https://www.surveymonkey.com/r/KKHZZS2
+Appreciate feedback through https://www.surveymonkey.com/r/KKHZZS2
 
 Happy ML :-)
