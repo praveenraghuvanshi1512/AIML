@@ -1,4 +1,4 @@
-# Code Walkthrough for binary classification problem using ML.Net 
+# Binary classification using ML.Net 
 
 # ![](https://github.com/praveenraghuvanshi1512/AIML/blob/master/Meetup_29_June_2019/Images/ML_Net_logo.png)
 
@@ -19,11 +19,11 @@
 
 #### Setup
 
-1. Create a directory on system (c:\binaryclassification) 
+1. Create a directory on system such as "c:\binaryclassification" 
 
 2. Open Visual Studio code(VSCode) -> File -> Open Folder -> Navigate to above directory and select it
 
-3. Select 'New Terminal' from 'Terminal' at the top menu. It should open a command prompt with VS Code
+3. Select 'New Terminal' from 'Terminal' at the top menu. It should open a command prompt within VS Code
 
 4. Let's create a solution first for our projects. Enter below commands in terminal window
 
@@ -37,33 +37,29 @@
 
    > cd titanicbinaryclassification
 
-7. Install nuget packages. In the terminal enter below commands
+7. Download titanic data from https://web.stanford.edu/class/archive/cs/cs109/cs109.1166/problem12.html
 
-   > dotnet add package Microsoft.ML
-
-8. Download titanic data from https://web.stanford.edu/class/archive/cs/cs109/cs109.1166/problem12.html
-
-9. The data looks like below
+8. The data looks like below
 
 | Survived | Pclass | Name                                                 | Sex    | Age  | Siblings Aboard | Parents Aboard | Fare    |
 | -------- | ------ | ---------------------------------------------------- | ------ | ---- | --------------- | -------------- | ------- |
 | 0        | 3      | Mr. Owen Harris Braund                               | male   | 22   | 1               | 0              | 7.25    |
 | 1        | 1      | Mrs. John Bradley (Florence Briggs Thayer)   Cumings | female | 38   | 1               | 0              | 71.2833 |
-| 1        | 3      | Miss. Laina Heikkinen                                | female | 26   | 0               | 0              | 7.925   |
+| 1        | 3      | Miss. Laina Heikkinen                                | female | 0   | 0               | 0              | 7.925   |
 | 1        | 1      | Mrs. Jacques Heath (Lily May Peel) Futrelle          | female | 35   | 1               | 0              | 53.1    |
 | 0        | 3      | Mr. William Henry Allen                              | male   | 35   | 0               | 0              | 8.05    |
 
-10. In above data, we wanted to predict(Survived) survival of a traveler based on other features(PClass, Sex, Age, Siblings Aboard and Parents Aboard) available. 
+9. For the above data, we wanted to predict(Survived) survival of a traveler based on other features(PClass, Sex, Age, Siblings Aboard and Parents Aboard) available. 
 
-11. Here 'Survived' is Label and Other column header are features.
+10. Here 'Survived' is Label and other column(s) header are features.
 
-12. Create a directory 'data' and copy titanic.csv to it.
+11. Create a directory 'data' and copy titanic.csv to it.
 
     > mkdir data
 
-13. Open 'titanicbinaryclassification.csproj' in VSCode and copy below text just before </Project> tag
+12. Open 'titanicbinaryclassification.csproj' in VSCode and copy below text just before </Project> tag. 'CopyToOutputDirectory' is important as it determines whether to copy titanic.csv to the application executing directory. 'PreserveNewest' allows copying of file in case there a new version of it. 
 
-14. ```
+13. ```
     <ItemGroup>
     	<Content Include="data/titanic.csv"> 
         	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -71,21 +67,20 @@
     </ItemGroup>
     ```
 
- 
 
-15. Navigate back to titanicbinaryclassification directory in VSCode explorer and create directory 'Schema'. Right-click on Schema directory and click on 'New C# class'. Give name of file as Passenger.cs file. File structure should be as shown below.
+14. Navigate back to titanicbinaryclassification directory in VSCode explorer and create directory 'Schema'. Right-click on Schema directory and click on 'New C# class'. Give name of file as Passenger.cs file. File structure should be as shown below.
 
 ![](https://github.com/praveenraghuvanshi1512/AIML/blob/master/Meetup_29_June_2019/Images/Folder_Structure_basic.png)
 
-16. Install nuget package : Microsoft.ML by executing below command in Terminal
+15. Install nuget package : Microsoft.ML by executing below command in Terminal
 
    > ```
    > dotnet add package Microsoft.ML
    > ```
 
-17. Replace content of Passenger.cs with below code
+16. Replace content of Passenger.cs with below code
 
-18. ```  c#
+17. ```  c#
     using Microsoft.ML.Data;
     
     namespace titanicbinaryclassification.Schema
@@ -117,8 +112,6 @@
     ```
 
 
-
-
 #### Machine Learning using ML.Net
 
 Applying ML.Net to .Net applications involves below basic steps
@@ -131,14 +124,13 @@ Applying ML.Net to .Net applications involves below basic steps
 
    MLContext is the core of ML.Net. It provides a way to create components for data preparation, feature engineering, training, prediction and model evaluation.
 
-   Add below references to Microsoft.ML at the top in Program.cs
+   Add below references at the top of Program.cs
 
    ``` c#
    using Microsoft.ML;
    using Microsoft.ML.Data;
    ```
-
-   
+  
 
    Inside Main method, instantiate MLContext
 
@@ -148,7 +140,7 @@ Applying ML.Net to .Net applications involves below basic steps
 
 1. Load data from titanic.csv. Provide accurate path to file relative to current file, Program.cs.
 
-2. As titanic.csv file has header, we need to specify it
+2. As titanic.csv file has header, we need to set 'hasHeader' to true
 
 3. We need to specify how records are separated. Being a csv file, specify comma ','.
 
@@ -156,8 +148,6 @@ Applying ML.Net to .Net applications involves below basic steps
    Console.WriteLine("Load...");
    var data = mlContext.Data.LoadFromTextFile<Passenger>("Data/titanic.csv", hasHeader: true, separatorChar: ',');
    ```
-
-   
 
 5. Data is loaded and stored in 'data' variable
 
@@ -168,25 +158,22 @@ Applying ML.Net to .Net applications involves below basic steps
    ```c#
    var trainTestData = mlContext.Data.TrainTestSplit(data, 0.2); // Training/Test : 80/20
    ```
-
     
 
 **Transform :** Transformation  of data is performed in order to make it suitable for training. We'll perform below transformations.
 
-1. Converting string to numeric : Sex field from Male/Female to 0/1
+1. One-hot-encoding: Converting string/non-float to numeric : Sex field from Male/Female to 0/1
 
-2. Replace missing values: Missing age to be replaced by mean
+2. Replace missing values: In sample records table, age of Miss. Laina Heikkinen is missing and it has to be replaced with some meaningful value such as mean.
 
 3. Contenate: Merge features involved in model training
 
 4. Add below namespace at the top of file
 
-5. ``` c#
+   ``` c#
    using static Microsoft.ML.Transforms.MissingValueReplacingEstimator;
    ```
-
-6. 
-
+5. Create dataPipeline
    ```c#
    Console.WriteLine("Transform...");
                var dataProcessPipeline = mlContext.Transforms.Categorical.OneHotEncoding("Sex", "Sex")
@@ -198,14 +185,14 @@ Applying ML.Net to .Net applications involves below basic steps
 
 **Train :**  Training is performed on cleansed data. .
 
- 1. Select algorithm
+ 1. Select algorithm: Selection is based on different types of algorithm such as Logistic Regression for a binary classification.
 
  2. Train Model
 
     ``` c#
     Console.WriteLine("Train...");
     var trainingPipeline = dataProcessPipeline.Append(mlContext.BinaryClassification.Trainers.LbfgsLogisticRegression("Survived"));
-                var trainedModel = trainingPipeline.Fit(trainTestData.TrainSet);
+    var trainedModel = trainingPipeline.Fit(trainTestData.TrainSet);
     ```
 
     
@@ -226,7 +213,7 @@ Console.WriteLine($"Accuracy: {accuracy}%");
 
 
 
-**Save :** Save generated model after training in binary format in order to use it in a application such as desktop or web. 
+**Save :** Save generated model after training in binary format in order to use it in other applications such as desktop or web. 
 
 1. Add reference to System.IO to be used by Path.Combine()
 
@@ -322,8 +309,6 @@ Console.WriteLine($"Accuracy: {accuracy}%");
    PS C:\binaryclassification\titanicbinaryclassification>
    ```
 
-   
-
 
 
 **Result:** Our model has a decent accuracy of 80.17% with Logistic Regression algorithm. Also, it has predicted on new unseen Passenger 'Mark Farragher' as Perished.
@@ -338,10 +323,10 @@ ML.Net provides a way to automagically predict things by running different algor
 
 | S.No | Custom ML                                    | AutoML                                   |
 | ---- | -------------------------------------------- | ---------------------------------------- |
-| 1.   | Manually try with algorithms                 | Runs different algorithms                |
+| 1.   | Manually experiment with different algorithms| Runs different algorithms                |
 | 2    | Time consuming in identifying best algorithm | Runs many algorithm without code changes |
 | 3    | Provides better control of algorithms        | No control over algorithm selection      |
-| 4    | Manually write code                          | Auto-generated code                      |
+| 4    | Manually write code                          | Auto-generates code                      |
 
 1. Install ML.Net CLI 
 
@@ -395,13 +380,12 @@ ML.Net provides a way to automagically predict things by running different algor
 
 
 
-As you can see there is an improvement in accuracy (83.33%) with SdcaLogisticRegressionBinary algorithm.
-
-Code, model and logs path is also present to be used.
+As you can see there is an improvement in accuracy (83.33%) with SdcaLogisticRegressionBinary algorithm compared to 80.17% from manual program. Code, model and logs path is also present to be used.
 
 Full source code is available at https://github.com/praveenraghuvanshi1512/AIML/tree/master/Meetup_29_June_2019/Source%20code/binaryclassification
 
 This concludes a sample on Binary classification. Please leave a message for any suggestion/improvements.
+
 Appreciate feedback through https://www.surveymonkey.com/r/KKHZZS2
 
 Happy ML :-)
