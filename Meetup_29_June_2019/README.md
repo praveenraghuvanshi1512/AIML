@@ -1,4 +1,4 @@
-https://www.meetup.com/Bangalore-AI-ML-Meetup/events/261505376/
+AI/ML Meetup (29-June-2019):  https://www.meetup.com/Bangalore-AI-ML-Meetup/events/261505376/
 
 # Binary classification using ML.Net 
 
@@ -10,14 +10,14 @@ https://www.meetup.com/Bangalore-AI-ML-Meetup/events/261505376/
 
 ### Pre-requisites
 
-- Visual Studio Code(Free IDE - https://code.visualstudio.com/download )/Visual Studio 2017 and above
+- Visual Studio Code(Free IDE - https://code.visualstudio.com/download )/Visual Studio 2017 and above(Community edition - https://visualstudio.microsoft.com/)
 - .Net Core SDK (Latest) : https://dotnet.microsoft.com/download
 - C# Extensions : https://marketplace.visualstudio.com/items?itemName=jchannon.csharpextensions
 - ML.Net CLI : run 'dotnet tool install -g mlnet'
 
 
 
-**Note:** Below instructions are for windows, however it can be used in a similar on MacOS and Linux. Just change the path as per OS.
+**Note:** Below instructions are for windows and can be used in a similar fashion on MacOS and Linux. Just change the path as per OS.
 
 #### Setup
 
@@ -47,13 +47,13 @@ https://www.meetup.com/Bangalore-AI-ML-Meetup/events/261505376/
 | -------- | ------ | ---------------------------------------------------- | ------ | ---- | --------------- | -------------- | ------- |
 | 0        | 3      | Mr. Owen Harris Braund                               | male   | 22   | 1               | 0              | 7.25    |
 | 1        | 1      | Mrs. John Bradley (Florence Briggs Thayer)   Cumings | female | 38   | 1               | 0              | 71.2833 |
-| 1        | 3      | Miss. Laina Heikkinen                                | female | 0   | 0               | 0              | 7.925   |
+| 1        | 3      | Miss. Laina Heikkinen                                | female | 0    | 0               | 0              | 7.925   |
 | 1        | 1      | Mrs. Jacques Heath (Lily May Peel) Futrelle          | female | 35   | 1               | 0              | 53.1    |
 | 0        | 3      | Mr. William Henry Allen                              | male   | 35   | 0               | 0              | 8.05    |
 
 9. For the above data, we wanted to predict(Survived) survival of a traveler based on other features(PClass, Sex, Age, Siblings Aboard and Parents Aboard) available. 
 
-10. Here 'Survived' is Label and other column(s) header are features.
+10. Here 'Survived' is Label and other column(s) header are 'features'.
 
 11. Create a directory 'data' and copy titanic.csv to it.
 
@@ -132,7 +132,7 @@ Applying ML.Net to .Net applications involves below basic steps
    using Microsoft.ML;
    using Microsoft.ML.Data;
    ```
-  
+
 
    Inside Main method, instantiate MLContext
 
@@ -160,7 +160,7 @@ Applying ML.Net to .Net applications involves below basic steps
    ```c#
    var trainTestData = mlContext.Data.TrainTestSplit(data, 0.2); // Training/Test : 80/20
    ```
-    
+   
 
 **Transform :** Transformation  of data is performed in order to make it suitable for training. We'll perform below transformations.
 
