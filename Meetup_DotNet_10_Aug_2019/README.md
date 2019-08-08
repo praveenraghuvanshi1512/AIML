@@ -1,5 +1,9 @@
 .Net Bangalore Meetup (10-Aug-2019): https://www.meetup.com/DotNetBLR/events/262410498/
 
+![](https://secure.meetupstatic.com/photos/event/a/6/c/d/highres_483402701.jpeg)
+
+
+
 # Binary classification using ML.Net 
 
 # ![](https://github.com/praveenraghuvanshi1512/AIML/blob/master/Meetup_DotNet_10_Aug_2019/Images/ML_Net_logo.png)
