@@ -2,7 +2,7 @@ AI/ML Meetup (29-June-2019):  https://www.meetup.com/Bangalore-AI-ML-Meetup/even
 
 # Binary classification using ML.Net 
 
-# ![](https://github.com/praveenraghuvanshi1512/AIML/blob/master/Meetup_29_June_2019/Images/ML_Net_logo.png)
+# ![](https://github.com/praveenraghuvanshi1512/AIML/blob/master/Meetup_AI_ML_29_June_2019/Images/ML_Net_logo.png)
 
 
 
