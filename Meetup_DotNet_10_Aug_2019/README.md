@@ -39,13 +39,17 @@
 
    > dotnet new console -o titanicbinaryclassification
 
-6. Navigate to titanicbinaryclassification directory
+6. Add project to solution
+	
+	> dotnet sln binaryclassificationdemo.sln add .\titanicbinaryclassification\titanicbinaryclassification.csproj
+
+7. Navigate to titanicbinaryclassification directory
 
    > cd titanicbinaryclassification
 
-7. Download titanic data from https://web.stanford.edu/class/archive/cs/cs109/cs109.1166/problem12.html
+8. Download titanic data from https://web.stanford.edu/class/archive/cs/cs109/cs109.1166/problem12.html
 
-8. The data looks like below
+9. The data looks like below
 
 | Survived | Pclass | Name                                                 | Sex    | Age  | Siblings Aboard | Parents Aboard | Fare    |
 | -------- | ------ | ---------------------------------------------------- | ------ | ---- | --------------- | -------------- | ------- |
@@ -172,14 +176,14 @@ Applying ML.Net to .Net applications involves below basic steps
 
 2. Replace missing values: In sample records table, age of Miss. Laina Heikkinen is missing and it has to be replaced with some meaningful value such as mean.
 
-3. Contenate: Merge features involved in model training
+3. Concatenate: Merge features involved in model training
 
 4. Add below namespace at the top of file
 
    ``` c#
    using static Microsoft.ML.Transforms.MissingValueReplacingEstimator;
    ```
-5. Create dataPipeline
+5. Create Data Pipeline
    ```c#
    Console.WriteLine("Transform...");
                var dataProcessPipeline = mlContext.Transforms.Categorical.OneHotEncoding("Sex", "Sex")
