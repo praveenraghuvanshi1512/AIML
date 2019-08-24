@@ -1,4 +1,6 @@
-.Net Bangalore Meetup (10-Aug-2019): https://www.meetup.com/DotNetBLR/events/262410498/
+**Meetup** .Net Bangalore Meetup (10-Aug-2019): https://www.meetup.com/DotNetBLR/events/262410498/
+
+**Video** ![](https://www.youtube.com/watch?v=QOLaZhBZ6-k&t=152s)
 
 ![](https://secure.meetupstatic.com/photos/event/a/6/c/d/highres_483402701.jpeg)
 
